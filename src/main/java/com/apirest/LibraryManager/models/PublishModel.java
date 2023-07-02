@@ -10,7 +10,7 @@ import java.util.UUID;
 @Table(name="TB_PUBLISH")
 public class PublishModel implements Serializable{
  @Serial
- private static final long serialVersionUID = 1L;
+ private static final long serialVersionUID = 2L;
 
  @Id
  @GeneratedValue(strategy=GenerationType.AUTO)
