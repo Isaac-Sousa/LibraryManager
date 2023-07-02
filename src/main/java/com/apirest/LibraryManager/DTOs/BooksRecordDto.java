@@ -1,0 +1,4 @@
+package com.apirest.LibraryManager.DTOs;
+
+public record BooksRecordDto() {
+}
