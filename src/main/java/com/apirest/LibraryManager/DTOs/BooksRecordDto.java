@@ -1,4 +1,9 @@
 package com.apirest.LibraryManager.DTOs;
 
-public record BooksRecordDto() {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.Year;
+
+public record BooksRecordDto(@NotBlank String bookName, @NotBlank String bookAuthor, @NotNull Year bookRelease) {
 }

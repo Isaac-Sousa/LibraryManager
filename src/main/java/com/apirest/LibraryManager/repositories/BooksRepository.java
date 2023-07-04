@@ -1,7 +1,6 @@
 package com.apirest.LibraryManager.repositories;
 
 import com.apirest.LibraryManager.models.BooksModel;
-import com.apirest.LibraryManager.models.PublishModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
