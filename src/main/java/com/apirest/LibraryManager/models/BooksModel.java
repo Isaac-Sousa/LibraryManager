@@ -2,9 +2,7 @@ package com.apirest.LibraryManager.models;
 
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 import java.io.Serial;
@@ -12,7 +10,8 @@ import java.io.Serializable;
 import java.time.Year;
 import java.util.UUID;
 
-
+@Entity
+@Table(name = "TB_BOOKS")
 public class BooksModel implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
