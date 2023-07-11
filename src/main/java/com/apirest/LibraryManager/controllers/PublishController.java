@@ -21,13 +21,13 @@ public class PublishController {
     @Autowired
     PublishRepository publishRepository;
 
-    @PostMapping("/publish")
+    @PostMapping("api/v1//publish")
     public ResponseEntity<PublishModel>savePublish(@RequestBody @Valid PublishRecordDto publishRecordDto){
         var publishModel = new PublishModel();
         BeanUtils.copyProperties(publishRecordDto, publishModel); /*Converte de DTO para Model*/
         return ResponseEntity.status(HttpStatus.CREATED).body(publishRepository.save(publishModel));
     }
-    @GetMapping("/publish")
+    @GetMapping("api/v1//publish")
     public ResponseEntity<List<PublishModel>> getAllPublish(){
           return ResponseEntity.status(HttpStatus.OK).body(publishRepository.findAll());
     }
