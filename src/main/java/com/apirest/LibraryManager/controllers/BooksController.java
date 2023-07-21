@@ -16,13 +16,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/books")
 public class BooksController {
 
     @Autowired
     BooksRepository booksRepository;
 
-    @PostMapping("/api/v1/books")
+    @PostMapping("/books")
     public ResponseEntity<BooksModel>saveBooks(@RequestBody @Valid BooksRecordDto booksRecordDto){
         var booksModel = new BooksModel();
         BeanUtils.copyProperties(booksRecordDto,booksModel);
@@ -31,7 +30,7 @@ public class BooksController {
     @ApiOperation(value = "Return an example")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Documentation working")})
-    @GetMapping("/api/v1/books")
+    @GetMapping("/books")
     public ResponseEntity<List<BooksModel>> getAllBooks(){
       return ResponseEntity.status(HttpStatus.OK).body(booksRepository.findAll());
     }

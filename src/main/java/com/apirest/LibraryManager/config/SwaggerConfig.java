@@ -10,10 +10,10 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
 @EnableSwagger2
 public class SwaggerConfig {
-    //springfox.documentation.swagger.v2.path=/api-docs
+    //springdoc.swagger-ui.path=/api/swagger-ui.html
+
     private static final String BASE_PACKAGE = "com.apirest.LibraryManager";
     private static final String TITLE = "Library Manager";
     private static final String DESCRIPTION = "Initial api";
@@ -30,7 +30,8 @@ public class SwaggerConfig {
               .apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))
               .paths(PathSelectors.any())
               .build()
-              .apiInfo(buildApiInfo());
+              .apiInfo(buildApiInfo())
+              .pathMapping("/");
     }
     private ApiInfo buildApiInfo() {
         return new ApiInfoBuilder()
