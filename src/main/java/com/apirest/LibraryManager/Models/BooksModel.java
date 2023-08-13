@@ -9,7 +9,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "TB_BOOKS")
 public class BooksModel {
-    //opa deixa eu verificar
     @Serial
     private static final long serialVersionUID = 1L;
     @Id
