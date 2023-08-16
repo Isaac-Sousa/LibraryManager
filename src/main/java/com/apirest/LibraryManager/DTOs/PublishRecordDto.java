@@ -1,4 +1,7 @@
 package com.apirest.LibraryManager.DTOs;
 
-public record PublishRecordDto() {
+import jakarta.validation.constraints.NotBlank;
+
+public record PublishRecordDto(@NotBlank String publishName,@NotBlank String publishCity) {
+
 }
