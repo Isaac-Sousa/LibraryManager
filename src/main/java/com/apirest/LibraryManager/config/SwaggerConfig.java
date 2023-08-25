@@ -1,6 +1,9 @@
 package com.apirest.LibraryManager.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -8,39 +11,48 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableSwagger2
+import static com.apirest.LibraryManager.utils.ProjectConstants.PROJECT_BASE_PACKAGE;
+
+@Configuration
+@PropertySource(value = "classpath:swagger-info-config.properties")
 public class SwaggerConfig {
-private static final String BASE_PACKAGE = "com.apirest.LibaryManager";
-private static final String TITLE = "Library Manager";
-private static final String Description = "Initial api";
-private static final String VERSION = "1.0.0";
-private static final String CONTACT_NAME = "Isaac de Sousa";
-private static final String CONTACT_GITHUB = "https://github.com/Isaac-Sousa";
-private static final String CONTACT_EMAIL = "isaacsousadev@gmail.com";
 
-  @Bean
-    public Docket api(){
-      return new Docket(DocumentationType.SWAGGER_2)
-      .select()
-              .apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))
-              .paths(PathSelectors.any())
-              .build()
-              .apiInfo(buildApiInfo())
-              .pathMapping("/");
-  }
+    @Value("${swagger.app-info.name}")
+    private String appName;
 
-    private ApiInfo buildApiInfo(){
-      return new ApiInfoBuilder()
-              .title(TITLE)
-              .description(Description)
-              .version(VERSION)
-              .contact(new Contact(CONTACT_NAME,CONTACT_GITHUB,CONTACT_EMAIL))
-              .build();
+    @Value("${swagger.app-info.description}")
+    private String appDescription;
+
+    @Value("${swagger.app-info.version}")
+    private String appVersion;
+
+    @Value("${swagger.contact.name}")
+    private String contactName;
+
+    @Value("${swagger.contact.url}")
+    private String contactUrl;
+
+    @Value("${swagger.contact.email}")
+    private String contactEmail;
+
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("v1.0")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage(PROJECT_BASE_PACKAGE))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(getApiInfo());
     }
 
-
-
-
+    private ApiInfo getApiInfo() {
+        return new ApiInfoBuilder()
+                .title(appName)
+                .version(appVersion)
+                .description(appDescription)
+                .contact(new Contact(contactName, contactUrl, contactEmail))
+                .build();
+    }
 }
