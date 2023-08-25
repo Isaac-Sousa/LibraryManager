@@ -8,7 +8,7 @@ public class ProjectConstants {
 
     public static final String DEFAULT_ENCODING = "UTF-8";
 
-    public static final String PROJECT_BASE_PACKAGE = "com.springboot.boilerplate.springbootboilerplate";
+    public static final String PROJECT_BASE_PACKAGE = "com.apirest.LibraryManager";
 
     public static final Locale BRAZIL_LOCALE = new Locale.Builder().setLanguage("pt-br").setRegion("BR").build();
 
