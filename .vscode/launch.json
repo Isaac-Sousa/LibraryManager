@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LibraryManagerApplication<LibraryManager>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.apirest.LibraryManager.LibraryManagerApplication",
+            "projectName": "LibraryManager",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
