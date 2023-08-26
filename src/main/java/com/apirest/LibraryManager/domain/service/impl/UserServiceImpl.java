@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.apirest.LibraryManager.domain.models.UserModel;
+import com.apirest.LibraryManager.domain.models.User;
 import com.apirest.LibraryManager.domain.repositories.UserRepository;
 import com.apirest.LibraryManager.domain.service.UserService;
 
@@ -19,12 +19,12 @@ public class UserServiceImpl implements UserService{
 	}
 
     @Override
-	public List<UserModel> getAllUsers() {
+	public List<User> getAllUsers() {
 		return userRepository.findAll();
 	}
 
 	@Override
-	public UserModel createUser(UserModel userModel) {
+	public User createUser(User userModel) {
 		return userRepository.save(userModel);
 	}
 }

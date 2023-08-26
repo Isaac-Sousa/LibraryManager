@@ -2,8 +2,8 @@ package com.apirest.LibraryManager.domain.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.apirest.LibraryManager.domain.models.UserModel;
+import com.apirest.LibraryManager.domain.models.User;
 
-public interface UserRepository extends JpaRepository<UserModel, Long>{
+public interface UserRepository extends JpaRepository<User, Long>{
     
 }

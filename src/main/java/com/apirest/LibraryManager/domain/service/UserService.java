@@ -2,11 +2,11 @@ package com.apirest.LibraryManager.domain.service;
 
 import java.util.List;
 
-import com.apirest.LibraryManager.domain.models.UserModel;
+import com.apirest.LibraryManager.domain.models.User;
 
 public interface UserService {
     
-	List<UserModel> getAllUsers();
+	List<User> getAllUsers();
 
-	UserModel createUser(UserModel userModel);
+	User createUser(User userModel);
 }

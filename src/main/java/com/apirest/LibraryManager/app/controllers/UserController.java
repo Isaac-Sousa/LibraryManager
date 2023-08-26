@@ -1,7 +1,7 @@
 package com.apirest.LibraryManager.app.controllers;
 
 import com.apirest.LibraryManager.domain.dtos.UserDto;
-import com.apirest.LibraryManager.domain.models.UserModel;
+import com.apirest.LibraryManager.domain.models.User;
 import com.apirest.LibraryManager.domain.service.UserService;
 
 import org.modelmapper.ModelMapper;
@@ -36,9 +36,9 @@ public class UserController {
 	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
 
 		// convert DTO to entity
-		UserModel userRequest = modelMapper.map(userDto, UserModel.class);
+		User userRequest = modelMapper.map(userDto, User.class);
 
-		UserModel userModel = userService.createUser(userRequest);
+		User userModel = userService.createUser(userRequest);
 
 		// convert entity to DTO
 		UserDto userResponse = modelMapper.map(userModel, UserDto.class);
