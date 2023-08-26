@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.apirest.LibraryManager.domain.models.User;
 import com.apirest.LibraryManager.domain.repositories.UserRepository;
 import com.apirest.LibraryManager.domain.service.UserService;
+import com.apirest.LibraryManager.exception.ResourceNotFoundException;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -24,7 +25,27 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User createUser(User userModel) {
-		return userRepository.save(userModel);
+	public User createUser(User user) {
+		return userRepository.save(user);
+	}
+
+	@Override
+	public User updateUser(long id, User userRequest) {
+		User user = userRepository.findById(id)
+					.orElseThrow(() -> new ResourceNotFoundException("Not possible update this"));
+		
+		user.setName(userRequest.getName());
+		user.setAdress(userRequest.getAdress());
+		user.setCity(userRequest.getCity());
+		user.setEmail(userRequest.getEmail());
+		return userRepository.save(user);
+	}
+
+	@Override
+	public void deleteUser(long id) {
+		User user = userRepository.findById(id)
+					.orElseThrow(() -> new ResourceNotFoundException("Not possible deleted this"));
+		
+		userRepository.delete(user);
 	}
 }
