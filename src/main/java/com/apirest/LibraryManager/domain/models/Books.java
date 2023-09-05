@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "usuarios")
+@Table(name = "livros")
 public class User {
     
     @Id
@@ -21,16 +21,14 @@ public class User {
 
     @Size(min = 3, max = 35)
     @Column(nullable = false)
-    private String Username;
+    private String Bookname;
 
     @Size(min = 3, max = 35)
     @Column(nullable = false)
-    private String adress;
+    private String Bookauthor;
 
     @Size(min = 3, max = 35)
     @Column(nullable = false)
-    private String city;
+    private Year BookRelease;
 
-    @Column(nullable = false)
-    private String email;
 }
