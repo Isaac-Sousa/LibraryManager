@@ -31,10 +31,10 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User updateUser(long id, User userRequest) {
-		User user = userRepository.findById(id)
+		User user = userRepository.findById(userId)
 					.orElseThrow(() -> new ResourceNotFoundException("Not possible update this"));
 		
-		user.setName(userRequest.getName());
+		user.setUsername(userRequest.getName());
 		user.setAdress(userRequest.getAdress());
 		user.setCity(userRequest.getCity());
 		user.setEmail(userRequest.getEmail());
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void deleteUser(long id) {
-		User user = userRepository.findById(id)
+		User user = userRepository.findById(userId)
 					.orElseThrow(() -> new ResourceNotFoundException("Not possible deleted this"));
 		
 		userRepository.delete(user);
