@@ -8,16 +8,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Year;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "livros")
-public class User {
+public class Books {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long BookId;
 
     @Size(min = 3, max = 35)
     @Column(nullable = false)
@@ -29,6 +31,6 @@ public class User {
 
     @Size(min = 3, max = 35)
     @Column(nullable = false)
-    private Year BookRelease;
+    private Year Bookrelease;
 
 }

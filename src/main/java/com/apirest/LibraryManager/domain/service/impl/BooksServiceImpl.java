@@ -12,7 +12,7 @@ import com.apirest.LibraryManager.exception.ResourceNotFoundException;
 @Service
 public class BooksServiceImpl implements BooksService{
     
-    private final BooksRepository BooksRepository
+    private final BooksRepository booksRepository;
    
     public BooksServiceImpl(BooksRepository booksRepository) {
         super();
@@ -30,19 +30,19 @@ public class BooksServiceImpl implements BooksService{
     }
 
     @Override
-    public Books updateBook(long id, Books bookRequest){
-        Books book = booksRepository.findById(booksId)
+    public Books updateBook(long BookId, Books bookRequest){
+        Books book = booksRepository.findById(BookId)
                      .orElseThrow(()-> new ResourceNotFoundException("Not possible update this"));
         
-        book.setBookname(bookRequest.getBookName());
-        book.setBookauthor(bookRequest.getBookAuthor());
-        book.setBookrelease(bookRequest.getBookRelease());
+        book.setBookname(bookRequest.getBookname());
+        book.setBookauthor(bookRequest.getBookauthor());
+        book.setBookrelease(bookRequest.getBookrelease());
         return booksRepository.save(book);             
     }
 
     @Override
-    public void deleteBook(long id){
-        Books book = booksRepository.findById(booksId)
+    public void deleteBook(long BookId){
+        Books book = booksRepository.findById(BookId)
                      .orElseThrow(()-> new ResourceNotFoundException("Not possible delete this"));
              
         booksRepository.delete(book);              
