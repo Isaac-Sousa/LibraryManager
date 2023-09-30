@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Year;
+
 
 @Data
 @AllArgsConstructor
@@ -31,6 +31,6 @@ public class Books {
 
     @Size(min = 3, max = 35)
     @Column(nullable = false)
-    private Year Bookrelease;
+    private String Bookrelease;
 
 }
